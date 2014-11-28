@@ -1,0 +1,23 @@
+{
+  "name": "execucaoScripts",
+  "version": "0.0.1",
+  "authors": [
+    "Pedro Matos de Carvalho <pedromatosdecarvalho@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.11.0",
+    "angular-ui-utils": "bower",
+    "angular":"bower",
+    "bootstrap":"3.2.0"
+  }
+}
