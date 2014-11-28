@@ -4,17 +4,17 @@
 
 appServices.factory('ScriptDataFactory', ['$http', function($http){
 
-   function postTax(script){
+   function postScript(script){
         return $http({
             method: 'POST',
-            url: '/postTax',
+            url: '/postScript',
             data: script
 
         });
     }
 
     return {
-        postTax: postTax
+      postScript: postScript
     }
 
 }]);

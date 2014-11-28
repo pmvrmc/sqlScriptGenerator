@@ -15,7 +15,12 @@ module.exports = function(server) {
             method: 'GET',
             path: '/',
             config: controller.base.index
-        }, 
+        },
+        {
+          method: 'POST',
+          path: '/postScript',
+          config: controller.base.postScript
+        },
 
         // ASSETS, JS, CSS, ETC.
         {

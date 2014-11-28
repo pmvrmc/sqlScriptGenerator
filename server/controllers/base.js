@@ -1,12 +1,12 @@
 module.exports = {
-    
+
     index: {
         handler: function(request, reply){
             reply.view('index');
         }
     },
-    
-    postTax: {
+
+    postScript: {
         handler: function(request, reply){
             console.log("LOGGIN REQUEST " + request.payload)
             reply(request.payload);
