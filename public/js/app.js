@@ -13,13 +13,13 @@ angular.module('execucaoScipts', [
 ]).
 config(['$routeProvider', function($routeProvider) {
 
-    $routeProvider.when('/taxes', {
-        templateUrl: 'partials/TaxesData/taxes-panel.html',
-        controller: 'TaxesDataCtrl'
+    $routeProvider.when('/script', {
+        templateUrl: 'partials/ScriptData/script.html',
+        controller: 'ScriptDataCtrl'
     });
 
     $routeProvider.otherwise({
-        redirectTo: '/taxes'
+        redirectTo: '/script'
     });
 
 }]);

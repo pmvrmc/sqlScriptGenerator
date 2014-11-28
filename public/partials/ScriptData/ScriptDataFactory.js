@@ -2,7 +2,7 @@
 
 /* Services */
 
-appServices.factory('TaxesDataFactory', ['$http', function($http){
+appServices.factory('ScriptDataFactory', ['$http', function($http){
 
    function postTax(script){
         return $http({

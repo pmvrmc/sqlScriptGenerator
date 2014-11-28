@@ -1,0 +1,52 @@
+<form name='scriptForm' ng-submit='submitForm(scriptForm.$valid, user)' novalidate>
+
+	<div class='form-group' ng-repeat='formStructure in form'>
+
+		<div class='row' >
+			<div class='col-md-2'>
+				<label for='{{formStructure.labelFor}}' class='{{formStructure.labelClass}}'>{{formStructure.labelText}}</label>
+			</div>
+
+			<div class='col-md-4'>
+				<input type='{{formStructure.inputType}}'
+								id='{{formStructure.inputId}}'
+								placeholder='{{formStructure.inputPlaceholder}}'
+								name='{{formStrucutre.inputName}}'
+								class='{{formStructure.inputClass}}'
+								ng-model='script[formStructure.inputNgModel]'
+								ng-required='{{formStructure.inputRequired}}'/>
+			</div>
+			<div class='col-md-3'>
+				<span ng-show='{{formStructure.errorNgShow}}' class="help-block">{{formStructure.errorText}}</span>
+			</div>
+		</div>
+
+	</div>
+
+	<textarea id='scriptQuery' placeholder='Script a executar' name='scriptQuery' class='form-control' rows='10' ng-model='script.query'/>
+
+	<!-- SUBMIT BUTTON -->
+	<button type="submit" class="btn btn-primary" ng-disabled='!scriptForm.$valid'>Submit</button>
+</form>
+
+<pre>
+	<span ng-if="script.objective || script.target || script.procedure || script.expectedResult">/*</span>
+	<span ng-if="script.objective">Objectivo: {{script.objective}}</span>
+	<span ng-if="script.target">Alvo: {{script.target}}</span>
+	<span ng-if="script.procedure">Procedimento: {{script.procedure}}</span>
+	<span ng-if="script.expectedResult">Resultado Esperado: {{script.expectedResult}}</span>
+	<span ng-if="script.objective || script.target || script.procedure || script.expectedResult">*/</span>
+
+	SPOOL G:\AGOC-NP\NP\Operacao\logs\{{script.schema}}\{{script.date | date:'yyyyMMdd'}}\{{script.date | date:'yyyyMMdd'}}_{{script.name}}.log
+
+	set echo on;
+
+	{{script.query}}
+
+	commit;
+
+	set echo off;
+
+	SPOOL OFF
+
+</pre>

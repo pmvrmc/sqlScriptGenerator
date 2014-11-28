@@ -27,10 +27,12 @@
 </form>
 
 <pre>
+	<span ng-if="script.objective || script.target || script.procedure || script.expectedResult">/*</span>
 	<span ng-if="script.objective">Objectivo: {{script.objective}}</span>
 	<span ng-if="script.target">Alvo: {{script.target}}</span>
 	<span ng-if="script.procedure">Procedimento: {{script.procedure}}</span>
 	<span ng-if="script.expectedResult">Resultado Esperado: {{script.expectedResult}}</span>
+	<span ng-if="script.objective || script.target || script.procedure || script.expectedResult">*/</span>
 
 	SPOOL G:\AGOC-NP\NP\Operacao\logs\{{script.schema}}\{{script.date | date:'yyyyMMdd'}}\{{script.date | date:'yyyyMMdd'}}_{{script.name}}.log
 

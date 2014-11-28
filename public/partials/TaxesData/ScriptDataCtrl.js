@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-appControllers.controller('TaxesDataCtrl', ['$scope', 'TaxesDataFactory', function($scope, TaxesDataFactory) {
+appControllers.controller('ScriptDataCtrl', ['$scope', 'ScriptDataFactory', function($scope, ScriptDataFactory) {
 
   //the object that will store the form data aka ng-model
   $scope.script = {};
@@ -12,7 +12,7 @@ appControllers.controller('TaxesDataCtrl', ['$scope', 'TaxesDataFactory', functi
 	$scope.submitForm = function(isValid, script) {
 		// check to make sure the form is completely valid
 		if (isValid) {
-			TaxesDataFactory.postTax(user).then(function(result){
+			ScriptDataFactory.postTax(user).then(function(result){
                 alert("Post data: \n" + JSON.stringify(result.data));
             });
 		}
@@ -29,9 +29,12 @@ appControllers.controller('TaxesDataCtrl', ['$scope', 'TaxesDataFactory', functi
                 'inputType' : 'text',
                 'inputId' : 'name',
                 'inputName' : 'name',
+                'inputRequired' : true,
                 'inputPlaceholder' : 'Nome do Script',
                 'inputClass' : 'form-control',
-                'inputNgModel' : 'name'
+                'inputNgModel' : 'name',
+                'errorNgShow' : 'userFieldForm.field.$invalid && !userFieldForm.field.$pristine',
+                'errorText' : 'Campo obrigatório'
             },
             {
                 'labelFor' : 'schema',
@@ -40,9 +43,12 @@ appControllers.controller('TaxesDataCtrl', ['$scope', 'TaxesDataFactory', functi
                 'inputType' : 'text',
                 'inputId' : 'schema',
                 'inputName' : 'schema',
+                'inputRequired' : true,
                 'inputPlaceholder' : 'Schema do Script',
                 'inputClass' : 'form-control',
-                'inputNgModel' : 'schema'
+                'inputNgModel' : 'schema',
+                'errorNgShow' : 'userFieldForm.field.$invalid && !userFieldForm.field.$pristine',
+                'errorText' : 'Campo obrigatório'
             },
             {
                 'labelFor' : 'objective',
@@ -51,6 +57,7 @@ appControllers.controller('TaxesDataCtrl', ['$scope', 'TaxesDataFactory', functi
                 'inputType' : 'text',
                 'inputId' : 'objective',
                 'inputName' : 'obective',
+                'inputRequired' : false,
                 'inputPlaceholder' : 'Objectivo do Script',
                 'inputClass' : 'form-control',
                 'inputNgModel' : 'objective'
@@ -62,6 +69,7 @@ appControllers.controller('TaxesDataCtrl', ['$scope', 'TaxesDataFactory', functi
               'inputType' : 'text',
               'inputId' : 'target',
               'inputName' : 'target',
+              'inputRequired' : false,
               'inputPlaceholder' : 'Alvo do Script',
               'inputClass' : 'form-control',
               'inputNgModel' : 'target'
@@ -73,6 +81,7 @@ appControllers.controller('TaxesDataCtrl', ['$scope', 'TaxesDataFactory', functi
                 'inputType' : 'text',
                 'inputId' : 'procedure',
                 'inputName' : 'procedure',
+                'inputRequired' : false,
                 'inputPlaceholder' : 'Passos de execução do script',
                 'inputClass' : 'form-control',
                 'inputNgModel' : 'procedure'
@@ -84,6 +93,7 @@ appControllers.controller('TaxesDataCtrl', ['$scope', 'TaxesDataFactory', functi
               'inputType' : 'text',
               'inputId' : 'expectedResult',
               'inputName' : 'expectedResult',
+              'inputRequired' : false,
               'inputPlaceholder' : 'Alterações esperadas na BD',
               'inputClass' : 'form-control',
               'inputNgModel' : 'expectedResult'
