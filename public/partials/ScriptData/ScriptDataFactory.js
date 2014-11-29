@@ -2,14 +2,13 @@
 
 /* Services */
 
-appServices.factory('ScriptDataFactory', ['$http', function($http){
+appServices.factory('ScriptDataFactory', ['$http', '$filter', function($http, $filter){
 
    function postScript(script){
         return $http({
             method: 'POST',
-            url: '/postScript',
+            url: '/script/' + $filter('date')(script.date, 'yyyyMMdd') + '_' + script.name + '.sql',
             data: script
-
         });
     }
 

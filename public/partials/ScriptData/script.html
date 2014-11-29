@@ -1,5 +1,5 @@
 <form name='scriptForm' ng-submit='submitForm(scriptForm.$valid, script)' novalidate>
-
+	<ng-form name='scriptForm'>
 	<div class='form-group' ng-repeat='formStructure in form' ng-class='{{formStructure.formGroupNgClass}}'>
 		<ng-form name='scriptFieldForm'>
 			<div class='row' >
@@ -23,8 +23,8 @@
 		</ng-form>
 	</div>
 
-	<textarea id='scriptQuery' placeholder='Script a executar' name='scriptQuery' class='form-control' rows='10' ng-model='script.query'/>
-
+	<textarea id='scriptQuery' placeholder='Script a executar' name='scriptQuery' class='form-control' rows='10' ng-model='script.query' ng-required='true'/>
+</ng-form>
 	<!-- SUBMIT BUTTON -->
 	<button type="submit" class="btn btn-primary" ng-disabled='!scriptForm.$valid'>Submit</button>
 </form>

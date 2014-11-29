@@ -11,10 +11,8 @@ appControllers.controller('ScriptDataCtrl', ['$scope', 'ScriptDataFactory', func
 
 	$scope.submitForm = function(isValid, script) {
 		// check to make sure the form is completely valid
-		if (isValid) {
-      ScriptDataFactory.postScript(script).then(function(result){
-        alert("Server Post data: \n" + JSON.stringify(result.data));
-      });
+    if (isValid) {
+      ScriptDataFactory.postScript(script);
 		}
 		else {
 			alert('our form is not amazing');

@@ -17,7 +17,8 @@
   "dependencies": {
     "angular-bootstrap": "~0.11.0",
     "angular-ui-utils": "bower",
-    "angular":"bower",
+    "angular":"1.3.4",
+    "angular-route" : "1.3.4",
     "bootstrap":"3.2.0"
   }
 }

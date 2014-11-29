@@ -18,8 +18,4 @@ config(['$routeProvider', function($routeProvider) {
         controller: 'ScriptDataCtrl'
     });
 
-    $routeProvider.otherwise({
-        redirectTo: '/script'
-    });
-
 }]);

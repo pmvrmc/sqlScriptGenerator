@@ -18,8 +18,8 @@ module.exports = function(server) {
         },
         {
           method: 'POST',
-          path: '/postScript',
-          config: controller.base.postScript
+          path: '/script/{fileName}',
+          config: controller.base.getScript
         },
 
         // ASSETS, JS, CSS, ETC.

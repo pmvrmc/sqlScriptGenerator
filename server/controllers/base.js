@@ -1,4 +1,5 @@
 var fs = require('fs');
+var dateFormat = require('dateformat');
 
 module.exports = {
 
@@ -8,31 +9,34 @@ module.exports = {
         }
     },
 
-    postScript: {
+    getScript: {
         handler: function(request, reply){
-            textify(request.payload.script, function(err, sqlFileStream){
+            textify(request.params.fileName, request.payload, function(err, sqlFileName){
               if(err) throw err;
-              reply.pipe(sqlFileStream);
+              return reply.file('./scripts/'+ sqlFileName);
             });
 
-            function textify(script, callback){
+            function textify(scriptName, script, callback){
               if(script == null){
                 var no_script_error = new Error('Script is null');
                 no_script_error.null_script = true;
                 callback(no_script_error, null);
               }
-              var ws = fs.createWriteStream(script.date + '_' + script.name + '.sql');
+              var options = { encoding: 'utf8' };
+              var ws = fs.createWriteStream('./scripts/' + scriptName, options);
               if(script.objective || script.target || script.procedure || script.expectedResult){
                   if(script.objective) ws.write('/*\n\tObjectivo: ' + script.objective + '\n\t');
                   if(script.objective) ws.write('\tAlvo: ' + script.target + '\n\t');
                   if(script.objective) ws.write('\tProdecimento: ' + script.procedure + '\n\t');
                   if(script.objective) ws.write('\tResultado Esperado: ' + script.expectedResult + '\n*/\n');
               }
-              ws.write('SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\' + script.schema+ '\\' + script.date + '\\' + script.date + '_' + script.name + '.log\n');
-              ws.write('\nset echo on;\n');
+              ws.write('SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\' + script.schema+ '\\' +
+                        dateFormat(script.date, 'yyyymmdd') + '\\' +
+                        dateFormat(script.date, 'yyyymmdd') + '_' + script.name + '.log\n');
+              ws.write('\nset echo on;\n\n');
               ws.write(script.query);
-              ws.write('\ncommit;\n\nset echo off;\n\nSPOOL OFF');
-              callback(null, ws);
+              ws.end('\n\ncommit;\n\nset echo off;\n\nSPOOL OFF');
+              return callback(null, scriptName);
             };
         }
     },
