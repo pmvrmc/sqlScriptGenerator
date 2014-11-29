@@ -6,7 +6,6 @@ appControllers.controller('ScriptDataCtrl', ['$scope', 'ScriptDataFactory', func
 
   //the object that will store the form data aka ng-model
   $scope.script = {};
-
   $scope.script.date = new Date();
 
 	$scope.submitForm = function(isValid, script) {
@@ -15,10 +14,11 @@ appControllers.controller('ScriptDataCtrl', ['$scope', 'ScriptDataFactory', func
       ScriptDataFactory.postScript(script);
 		}
 		else {
-			alert('our form is not amazing');
+			alert('Form is not valid!');
 		}
 	};
 
+  //the form structure
 	$scope.form = [
             {
               'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid && !scriptFieldForm.$pristine }',
@@ -49,7 +49,7 @@ appControllers.controller('ScriptDataCtrl', ['$scope', 'ScriptDataFactory', func
               'inputNgModel' : 'schema',
               'errorNgShow' : 'scriptFieldForm.$invalid && !scriptFieldForm.$pristine',
               'errorText' : 'Campo obrigatório!'
-            },
+            }/*,
             {
               'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid && !scriptFieldForm.$pristine }',
               'labelFor' : 'objective',
@@ -101,7 +101,7 @@ appControllers.controller('ScriptDataCtrl', ['$scope', 'ScriptDataFactory', func
               'inputPlaceholder' : 'Alterações esperadas na BD',
               'inputClass' : 'form-control',
               'inputNgModel' : 'expectedResult'
-            }
+            }*/
         ];
 
 }]);

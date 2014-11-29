@@ -22,26 +22,26 @@
 			</div>
 		</ng-form>
 	</div>
-
 	<textarea id='scriptQuery' placeholder='Script a executar' name='scriptQuery' class='form-control' rows='10' ng-model='script.query' ng-required='true'/>
 </ng-form>
 	<!-- SUBMIT BUTTON -->
 	<button type="submit" class="btn btn-primary" ng-disabled='!scriptForm.$valid'>Submit</button>
 </form>
 
+<h3>Pré-visualização Script</h3>
 <pre>
-	<span ng-if="script.objective || script.target || script.procedure || script.expectedResult">/*</span>
+	<!--<span ng-if="script.objective || script.target || script.procedure || script.expectedResult">/*</span>
 	<span ng-if="script.objective">Objectivo: {{script.objective}}</span>
 	<span ng-if="script.target">Alvo: {{script.target}}</span>
 	<span ng-if="script.procedure">Procedimento: {{script.procedure}}</span>
 	<span ng-if="script.expectedResult">Resultado Esperado: {{script.expectedResult}}</span>
 	<span ng-if="script.objective || script.target || script.procedure || script.expectedResult">*/</span>
-
+-->
 	SPOOL G:\AGOC-NP\NP\Operacao\logs\{{script.schema}}\{{script.date | date:'yyyyMMdd'}}\{{script.date | date:'yyyyMMdd'}}_{{script.name}}.log
 
 	set echo on;
 
-	{{script.query}}
+	{{script.query.split('\n').join('\n\t')}}
 
 	commit;
 

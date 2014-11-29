@@ -13,9 +13,14 @@ angular.module('execucaoScipts', [
 ]).
 config(['$routeProvider', function($routeProvider) {
 
-    $routeProvider.when('/script', {
-        templateUrl: 'partials/ScriptData/script.html',
-        controller: 'ScriptDataCtrl'
-    });
+
+  $routeProvider.when('/', {
+    redirectTo: '/script'
+  });
+
+  $routeProvider.when('/script', {
+    templateUrl: 'partials/ScriptData/script.html',
+    controller: 'ScriptDataCtrl'
+  });
 
 }]);
