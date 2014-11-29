@@ -2,4 +2,4 @@
 
 /* Directives */
 
-var appDirectives = angular.module('execucaoScipts.directives', []);
+var appDirectives = angular.module('sqlScriptGenerator.directives', []);

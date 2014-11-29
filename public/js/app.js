@@ -2,12 +2,12 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('execucaoScipts', [
+angular.module('sqlScriptGenerator', [
     'ngRoute',
-    'execucaoScipts.filters',
-    'execucaoScipts.services',
-    'execucaoScipts.directives',
-    'execucaoScipts.controllers',
+    'sqlScriptGenerator.filters',
+    'sqlScriptGenerator.services',
+    'sqlScriptGenerator.directives',
+    'sqlScriptGenerator.controllers',
     'ui.utils',
     'ui.bootstrap'
 ]).

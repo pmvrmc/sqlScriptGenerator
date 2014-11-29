@@ -2,4 +2,4 @@
 
 /* Controllers */
 
-var appControllers = angular.module('execucaoScipts.controllers', []);
+var appControllers = angular.module('sqlScriptGenerator.controllers', []);

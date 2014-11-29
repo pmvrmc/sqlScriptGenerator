@@ -1,4 +1,4 @@
-execucaoScripts
+sqlScriptGenerator
 =======
 
 
@@ -6,7 +6,4 @@ AngularJS + HapiJS Testing!
 --------------------------
 
 
-Simple form & server response
-
-
-[App](http://hapitax.herokuapp.com/)
+SQL Script Generator, only care about the query itself!

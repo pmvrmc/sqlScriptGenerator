@@ -1,5 +1,5 @@
 {
-  "name": "execucaoScripts",
+  "name": "sqlScriptGenerator",
   "version": "1.0.0",
   "authors": [
     "Pedro Matos de Carvalho <pedromatosdecarvalho@gmail.com>"

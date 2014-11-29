@@ -2,4 +2,4 @@
 
 /* Filters */
 
-var appFilters = angular.module('execucaoScipts.filters', []);
+var appFilters = angular.module('sqlScriptGenerator.filters', []);

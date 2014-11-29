@@ -2,4 +2,4 @@
 
 /* Services */
 
-var appServices = angular.module('execucaoScipts.services', []);
+var appServices = angular.module('sqlScriptGenerator.services', []);
