@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-appControllers.controller('ScriptDataCtrl', ['$scope', 'ScriptDataFactory', function($scope, ScriptDataFactory) {
+appControllers.controller('ScriptDataCtrl', ['$scope', '$filter','ScriptDataFactory', function($scope, $filter, ScriptDataFactory) {
 
   //the object that will store the form data aka ng-model
   $scope.script = {};
@@ -11,7 +11,9 @@ appControllers.controller('ScriptDataCtrl', ['$scope', 'ScriptDataFactory', func
 	$scope.submitForm = function(isValid, script) {
 		// check to make sure the form is completely valid
     if (isValid) {
-      ScriptDataFactory.postScript(script);
+      ScriptDataFactory.postScript(script).success(function(){
+        window.location = '/script/' + $filter('date')(script.date, 'yyyyMMdd') + '_' + script.name + '.sql';
+      });
 		}
 		else {
 			alert('Form is not valid!');
