@@ -12,7 +12,7 @@ appControllers.controller('ScriptDataCtrl', ['$scope', '$filter','ScriptDataFact
 		// check to make sure the form is completely valid
     if (isValid) {
       ScriptDataFactory.postScript(script).success(function(){
-        window.location = '/script/' + $filter('date')(script.date, 'yyyyMMdd') + '_' + script.name + '.sql';
+        window.location = '/scripts/' + $filter('date')(script.date, 'yyyyMMdd') + '_' + script.name + '.sql';
       });
 		}
 		else {

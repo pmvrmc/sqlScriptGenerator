@@ -18,12 +18,12 @@ module.exports = function(server) {
         },
         {
           method: 'POST',
-          path: '/script/{fileName}',
+          path: '/scripts/{fileName}',
           config: controller.base.createScript
         },
         {
           method: 'GET',
-          path: '/script/{fileName}',
+          path: '/scripts/{fileName}',
           config: controller.base.getScript
         },
 

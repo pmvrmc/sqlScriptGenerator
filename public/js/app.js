@@ -15,11 +15,11 @@ config(['$routeProvider', function($routeProvider) {
 
 
   $routeProvider.when('/', {
-    redirectTo: '/script'
+    redirectTo: '/scripts'
   });
 
-  $routeProvider.when('/script', {
-    templateUrl: 'partials/ScriptData/script.html',
+  $routeProvider.when('/scripts', {
+    templateUrl: 'partials/ScriptData/scripts.html',
     controller: 'ScriptDataCtrl'
   });
 
