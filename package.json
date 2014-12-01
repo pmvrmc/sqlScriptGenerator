@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "author": "Pedro Carvalho",
   "private": false,
+  "repository": {
+	"type": "git",
+	"url": "git://github.com/pmvrmc/sqlScriptGenerator.git"
+  },
   "main": "server.js",
   "engines": {
     "node": "0.10.x"

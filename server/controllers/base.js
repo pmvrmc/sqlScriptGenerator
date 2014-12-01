@@ -27,13 +27,15 @@ module.exports = {
           }
           Joi.validate(request.payload, schemaPayload, function(err, value){
             if(err) reply.view('404', { title: 'You found a missing page, but won the 404 error!'}).code(404);
-            createSqlScript(request.params.fileName, request.payload, function(err, sqlFileName){
-              if(err) throw err;
-              reply(sqlFileName);
+            fs.mkdir('./scripts/', function(error){
+              if(!error || (error && error.code === 'EEXIST')){
+                createSqlScript(request.params.fileName, request.payload, function(err, sqlFileName){
+                  if(err) throw err;
+                  reply(sqlFileName);
+                });
+              }
             });
           });
-
-
         });
 
         function createSqlScript(scriptName, script, callback){
