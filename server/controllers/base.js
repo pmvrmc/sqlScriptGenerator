@@ -57,7 +57,9 @@ module.exports = {
           ws.write('SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\' + script.schema+ '\\' +
                     dateFormat(script.date, 'yyyymmdd') + '\\' +
                     dateFormat(script.date, 'yyyymmdd') + '_' + script.name + '.log\n');
-          ws.write('\nset echo on;\n\n');
+		  ws.write('\nset echo on;\n');
+		  ws.write('\nALTER SESSION SET current_schema=' + script.schema + ';\n');
+		  ws.write('\nALTER SESSION SET NLS_DATE_FORMAT=\'YYYY-MM-DD HH24:MI:SS\';\n\n');
           ws.write(script.query);
           ws.end('\n\ncommit;\n\nset echo off;\n\nSPOOL OFF');
           return callback(null, scriptName);
