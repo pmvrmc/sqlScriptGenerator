@@ -7,9 +7,7 @@ angular.module('sqlScriptGenerator', [
     'sqlScriptGenerator.filters',
     'sqlScriptGenerator.services',
     'sqlScriptGenerator.directives',
-    'sqlScriptGenerator.controllers',
-    'ui.utils',
-    'ui.bootstrap'
+    'sqlScriptGenerator.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
 
