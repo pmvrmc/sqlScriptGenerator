@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-appControllers.controller('ScriptDataCtrl', ['$scope', '$filter','ScriptDataFactory', function($scope, $filter, ScriptDataFactory) {
+sqlScriptGenerator.controller('ScriptDataCtrl', ['$scope', '$filter','ScriptDataFactory', function($scope, $filter, ScriptDataFactory) {
 
   //the object that will store the form data aka ng-model
   $scope.script = {};
@@ -20,90 +20,56 @@ appControllers.controller('ScriptDataCtrl', ['$scope', '$filter','ScriptDataFact
 		}
 	};
 
-  //the form structure
+  //Form structure
 	$scope.form = [
-            {
-              'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid && !scriptFieldForm.$pristine }',
-              'labelFor' : 'name',
-              'labelClass' : 'col-md-2 control-label',
-              'labelText' : 'Nome',
-              'inputType' : 'text',
-              'inputId' : 'name',
-              'inputName' : 'name',
-              'inputRequired' : true,
-              'inputPlaceholder' : 'Nome do Script',
-              'inputClass' : 'form-control',
-              'inputNgModel' : 'name',
-              'errorNgShow' : 'scriptFieldForm.$invalid && !scriptFieldForm.$pristine',
-              'errorText' : 'Campo obrigatório!'
-            },
-            {
-              'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid && !scriptFieldForm.$pristine }',
-              'labelFor' : 'schema',
-              'labelClass' : 'col-md-2 control-label',
-              'labelText' : 'Schema',
-              'inputType' : 'text',
-              'inputId' : 'schema',
-              'inputName' : 'schema',
-              'inputRequired' : true,
-              'inputPlaceholder' : 'Schema do Script',
-              'inputClass' : 'form-control',
-              'inputNgModel' : 'schema',
-              'errorNgShow' : 'scriptFieldForm.$invalid && !scriptFieldForm.$pristine',
-              'errorText' : 'Campo obrigatório!'
-            }/*,
-            {
-              'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid && !scriptFieldForm.$pristine }',
-              'labelFor' : 'objective',
-              'labelClass' : 'col-md-2 control-label',
-              'labelText' : 'Objectivo',
-              'inputType' : 'text',
-              'inputId' : 'objective',
-              'inputName' : 'obective',
-              'inputRequired' : false,
-              'inputPlaceholder' : 'Objectivo do Script',
-              'inputClass' : 'form-control',
-              'inputNgModel' : 'objective'
-            },
-            {
-              'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid && !scriptFieldForm.$pristine }',
-              'labelFor' : 'target',
-              'labelClass' : 'col-md-2 control-label',
-              'labelText' : 'Alvo',
-              'inputType' : 'text',
-              'inputId' : 'target',
-              'inputName' : 'target',
-              'inputRequired' : false,
-              'inputPlaceholder' : 'Alvo do Script',
-              'inputClass' : 'form-control',
-              'inputNgModel' : 'target'
-            },
-            {
-              'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid && !scriptFieldForm.$pristine }',
-              'labelFor' : 'procedure',
-              'labelClass' : 'col-md-2 control-label',
-              'labelText' : 'Procedimento',
-              'inputType' : 'text',
-              'inputId' : 'procedure',
-              'inputName' : 'procedure',
-              'inputRequired' : false,
-              'inputPlaceholder' : 'Passos de execução do script',
-              'inputClass' : 'form-control',
-              'inputNgModel' : 'procedure'
-            },
-            {
-              'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid && !scriptFieldForm.$pristine }',
-              'labelFor' : 'expectedResult',
-              'labelClass' : 'col-md-2 control-label',
-              'labelText' : 'Resultado Esperado',
-              'inputType' : 'text',
-              'inputId' : 'expectedResult',
-              'inputName' : 'expectedResult',
-              'inputRequired' : false,
-              'inputPlaceholder' : 'Alterações esperadas na BD',
-              'inputClass' : 'form-control',
-              'inputNgModel' : 'expectedResult'
-            }*/
-        ];
+    //Nome Script
+    {
+      'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid }',
+      'labelFor' : 'name',
+      'labelClass' : 'control-label',
+      'labelText' : 'Nome',
+      'inputType' : 'text',
+      'inputId' : 'name',
+      'inputName' : 'name',
+      'inputRequired' : true,
+      'inputPlaceholder' : 'Nome do Script',
+      'inputClass' : 'form-control',
+      'inputNgModel' : 'name',
+      'errorNgShow' : 'scriptFieldForm.$invalid',
+      'errorText' : 'Campo obrigatório!'
+    },
+    //Schema Script
+    {
+      'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid }',
+      'labelFor' : 'schema',
+      'labelClass' : 'control-label',
+      'labelText' : 'Schema',
+      'inputType' : 'text',
+      'inputId' : 'schema',
+      'inputName' : 'schema',
+      'inputRequired' : true,
+      'inputPlaceholder' : 'Schema do Script',
+      'inputClass' : 'form-control',
+      'inputNgModel' : 'schema',
+      'errorNgShow' : 'scriptFieldForm.$invalid',
+      'errorText' : 'Campo obrigatório!'
+    },
+    //SID Script
+    {
+      'formGroupNgClass' : '{ "has-error" : scriptFieldForm.$invalid }',
+      'labelFor' : 'env',
+      'labelClass' : 'control-label',
+      'labelText' : 'SID',
+      'inputType' : 'text',
+      'inputId' : 'env',
+      'inputName' : 'env',
+      'inputRequired' : true,
+      'inputPlaceholder' : 'SID do Script',
+      'inputClass' : 'form-control',
+      'inputNgModel' : 'env',
+      'errorNgShow' : 'scriptFieldForm.$invalid',
+      'errorText' : 'Campo obrigatório!'
+    }
+  ];
 
 }]);

@@ -2,12 +2,8 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('sqlScriptGenerator', [
-    'ngRoute',
-    'sqlScriptGenerator.filters',
-    'sqlScriptGenerator.services',
-    'sqlScriptGenerator.directives',
-    'sqlScriptGenerator.controllers'
+var sqlScriptGenerator = angular.module('sqlScriptGenerator', [
+    'ngRoute'
 ]).
 config(['$routeProvider', function($routeProvider) {
 
