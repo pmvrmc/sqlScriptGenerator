@@ -40,20 +40,19 @@
 
 <h3>Pré-visualização Script</h3>
 <pre>
-	{{commit}}
 	SPOOL G:\AGOC-NP\NP\Operacao\logs\{{script.env}}\{{script.date | date:'yyyyMMdd'}}\{{script.date | date:'yyyyMMdd'}}_{{script.name}}.log
 
-	set echo on;
+	SET ECHO ON;
 
 	ALTER SESSION SET current_schema={{script.schema}};
 
 	ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';
 
-	{{script.query.split('\n').join('\n\t')}}
+	{{script.query | filt:script.commit}}
 
-	commit;
+	COMMIT;
 
-	set echo off;
+	SET ECHO OFF;
 
 	SPOOL OFF
 

@@ -7,6 +7,7 @@ sqlScriptGenerator.controller('ScriptDataCtrl', ['$scope', '$filter','ScriptData
   //the object that will store the form data aka ng-model
   $scope.script = {};
   $scope.script.commit = 0;
+  $scope.script.query = '';
   $scope.script.date = new Date();
 
 	$scope.submitForm = function(isValid, script) {

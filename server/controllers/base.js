@@ -18,12 +18,10 @@ module.exports = {
         payload:{
           name: Joi.string().required(),
           schema: Joi.string().required(),
+          env: Joi.string().required(),
           query: Joi.string().required(),
-          objective: Joi.string(),
-          target: Joi.string(),
-          procedure: Joi.string(),
-          expectedResult: Joi.string(),
-          date: Joi.date().required()
+          date: Joi.date().required(),
+          commit: Joi.number().min(0).max(100).required()
         }
       },
 
@@ -45,15 +43,8 @@ module.exports = {
           }
           var options = { encoding: 'windows-1252' };
           var ws = fs.createWriteStream('./scripts/' + scriptName, options);
-          if(script.objective || script.target || script.procedure || script.expectedResult){
-              ws.write('/*\n');
-              if(script.objective) ws.write('\tObjectivo: ' + script.objective + '\n');
-              if(script.target) ws.write('\tAlvo: ' + script.target + '\n');
-              if(script.procedure) ws.write('\tProdecimento: ' + script.procedure + '\n');
-              if(script.expectedResult) ws.write('\tResultado Esperado: ' + script.expectedResult + '\n');
-              ws.write('*/\n');
-          }
-          ws.write('SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\' + script.schema+ '\\' +
+
+          ws.write('SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\' + script.env+ '\\' +
                     dateFormat(script.date, 'yyyymmdd') + '\\' +
                     dateFormat(script.date, 'yyyymmdd') + '_' + script.name + '.log\n');
     		  ws.write('\nset echo on;\n');
@@ -86,9 +77,6 @@ module.exports = {
             reply.view('404', {
                 title: 'You found a missing page, but won the 404 error!'
             }).code(404);
-        },
-        app: {
-            name: '404'
         }
     }
 }
