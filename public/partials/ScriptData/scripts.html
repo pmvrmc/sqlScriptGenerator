@@ -22,6 +22,17 @@
 		</ng-form>
 	</div>
 
+	<div class='row' >
+		<div class='col-md-2'>
+			<label>Commit a cada</label>
+		</div>
+		<div class='col-md-6'>
+			<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="10">10 linhas</label>
+			<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="50">50 linhas</label>
+			<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="100">100 linhas</label>
+			<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="0">Só no fim</label>
+		</div>
+
 	<textarea id='scriptQuery' placeholder='Script a executar' name='scriptQuery' class='form-control' rows='10' ng-model='script.query' ng-required='true'/>
 	<button type="submit" class="btn btn-primary" ng-disabled='!scriptForm.$valid'>Download</button>
 </ng-form>
@@ -29,6 +40,7 @@
 
 <h3>Pré-visualização Script</h3>
 <pre>
+	{{commit}}
 	SPOOL G:\AGOC-NP\NP\Operacao\logs\{{script.env}}\{{script.date | date:'yyyyMMdd'}}\{{script.date | date:'yyyyMMdd'}}_{{script.name}}.log
 
 	set echo on;
