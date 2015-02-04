@@ -1,12 +1,14 @@
+var fs = require('fs');
+var dateFormat = require('dateformat');
+
 module.exports = function() {
 
   var ScriptController = {};
 
   ScriptController.createScript = function(request, reply){
-    console.log('cenas');
     fs.mkdir('./scripts/', function(error){
       if(!error || (error && error.code === 'EEXIST')){
-        createSqlScript(request.params.fileName, request.payload, function(err, sqlFileName){
+        ScriptController.createSqlScript(request.params.fileName, request.payload, function(err, sqlFileName){
           if(err) throw err;
           reply(sqlFileName);
         });
@@ -34,11 +36,11 @@ module.exports = function() {
     ws.write('SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\' + script.env+ '\\' +
     dateFormat(script.date, 'yyyymmdd') + '\\' +
     dateFormat(script.date, 'yyyymmdd') + '_' + script.name + '.log\n');
-    ws.write('\nset echo on;\n');
+    ws.write('\nSET ECHO ON;\n');
     ws.write('\nALTER SESSION SET current_schema=' + script.schema + ';\n');
     ws.write('\nALTER SESSION SET NLS_DATE_FORMAT=\'YYYY-MM-DD HH24:MI:SS\';\n\n');
-    ws.write(script.query);
-    ws.end('\n\ncommit;\n\nset echo off;\n\nSPOOL OFF');
+    ws.write(script.query.split('\t').join(''));
+    ws.end('\n\nCOMMIT;\n\nSET ECHO OFF;\n\nSPOOL OFF');
 
     return callback(null, scriptName);
   };
