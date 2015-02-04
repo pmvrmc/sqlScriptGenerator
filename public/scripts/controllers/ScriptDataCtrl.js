@@ -1,14 +1,15 @@
 'use strict';
 
-/* Controllers */
-
 sqlScriptGenerator.controller('ScriptDataCtrl', ['$scope', '$filter','ScriptDataFactory', function($scope, $filter, ScriptDataFactory) {
 
   //the object that will store the form data aka ng-model
   $scope.script = {};
+  $scope.script.commit = 0;
+  $scope.script.query = '';
   $scope.script.date = new Date();
 
 	$scope.submitForm = function(isValid, script) {
+    script.query = $filter('filt')(script.query, script.commit);
 		// check to make sure the form is completely valid
     if (isValid) {
       ScriptDataFactory.postScript(script).success(function(){

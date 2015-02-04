@@ -1,6 +1,4 @@
 /node_modules/*
 npm-debug.log
-/lib/*
-/tmp/logs/*
 /public/bower_components/*
 /scripts/*

@@ -1,7 +1,5 @@
 'use strict';
 
-/* Services */
-
 sqlScriptGenerator.factory('ScriptDataFactory', ['$http', '$filter', function($http, $filter){
 
   //create the script and afterwards downloads it
