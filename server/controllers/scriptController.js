@@ -3,6 +3,7 @@ module.exports = function() {
   var ScriptController = {};
 
   ScriptController.createScript = function(request, reply){
+    console.log('cenas');
     fs.mkdir('./scripts/', function(error){
       if(!error || (error && error.code === 'EEXIST')){
         createSqlScript(request.params.fileName, request.payload, function(err, sqlFileName){

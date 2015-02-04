@@ -2,7 +2,7 @@
 module.exports = {
     scripts: {
         handler: {
-            directory: { path: './public/scr' }
+            directory: { path: './public/scripts' }
         },
         id : 'scripts'
     },

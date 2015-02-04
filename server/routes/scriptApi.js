@@ -3,6 +3,9 @@ var ScriptController = require('../controllers/scriptController')();
 
 var register = function (plugin, options, next) {
 
+    plugin.expose(ScriptController);
+
+
     plugin.route({
       method: 'GET',
       path: '/',
