@@ -1,7 +1,5 @@
 'use strict';
 
-/* Services */
-
 sqlScriptGenerator.filter('filt', function(){
 
   return function(query, nLines){

@@ -1,7 +1,5 @@
 'use strict';
 
-/* Controllers */
-
 sqlScriptGenerator.controller('ScriptDataCtrl', ['$scope', '$filter','ScriptDataFactory', function($scope, $filter, ScriptDataFactory) {
 
   //the object that will store the form data aka ng-model
