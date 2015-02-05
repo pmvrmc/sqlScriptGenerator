@@ -1,18 +1,20 @@
 'use strict';
 
-sqlScriptGenerator.filter('filt', function(){
+sqlScriptGenerator.filter('filt', function(_){
 
   return function(query, nLines){
-    if(nLines === 0 ) return query.split('\n').join('\n\t');
-
-    //TODO: remover string vazias do array
+    //eliminate empty lines
     var str = query.split('\n');
+    str = _.filter(str, function(line){return line.trim().length;});
+
+    if(nLines === 0 ) return str.join('\n\t');
+
     var result = '';
     var linesToCommit = nLines;
 
     for(var i = 0; i < str.length; i++){
 
-      //se o ultimo char foi ';'
+      //if last char was ';' and we have already passed nLines, COMMIT!
       if( (str[i].indexOf(';', str[i].length - ';'.length) !== -1)
           && (linesToCommit <= 1) ){
         result = result.concat('\n\t' + str[i] + '\n\n\tCOMMIT;\n');
