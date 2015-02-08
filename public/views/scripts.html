@@ -33,6 +33,17 @@
 				<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="100">100 linhas</label>
 				<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="0">Só no fim</label>
 			</div>
+		</div>
+
+		<div class='row' >
+			<div class='col-md-2'>
+				<label>Encoding</label>
+			</div>
+			<div class='col-md-6'>
+				<label class="radio-inline" ng-repeat='encoding in encodings'>
+					<input type="radio" ng-model="script.encoding" value="{{encoding}}">{{encoding}}</label>
+			</div>
+		</div>
 
 		<textarea id='scriptQuery' placeholder='Script a executar' name='scriptQuery' class='form-control' rows='10' ng-model='script.query' ng-required='true'/>
 	</ng-form>
@@ -42,6 +53,8 @@
 
 <h3>Pré-visualização Script</h3>
 <pre>
+	{{$scope.script.encoding}}
+
 	SPOOL G:\AGOC-NP\NP\Operacao\logs\{{script.env}}\{{script.date | date:'yyyyMMdd'}}\{{script.date | date:'yyyyMMdd'}}_{{script.name}}.log
 
 	SET ECHO ON;
@@ -50,7 +63,7 @@
 
 	ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';
 
-	{{script.query | filt:script.commit}}
+	{{script.query | addCommitsPreview:script.commit}}
 
 	COMMIT;
 
