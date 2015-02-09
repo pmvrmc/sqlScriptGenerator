@@ -17,11 +17,11 @@ sqlScriptGenerator.filter('addCommitsPreview', function(_){
       //if last char was ';' and we have already passed nLines, COMMIT!
       if( (str[i].indexOf(';', str[i].length - ';'.length) !== -1)
           && (linesToCommit <= 1) ){
-        result = result.concat('\n\t' + str[i] + '\n\n\tCOMMIT;\n');
+        result = result.concat('\n\t' + str[i].trim() + '\n\n\tCOMMIT;\n');
         linesToCommit = nLines;
       }
       else {
-        result = result.concat('\n\t' + str[i]);
+        result = result.concat('\n\t' + str[i].trim());
         --linesToCommit;
       }
     }
@@ -47,11 +47,11 @@ sqlScriptGenerator.filter('addCommits', function(_){
       //if last char was ';' and we have already passed nLines, COMMIT!
       if( (str[i].indexOf(';', str[i].length - ';'.length) !== -1)
         && (linesToCommit <= 1) ){
-          result = result.concat('\n' + str[i] + '\n\nCOMMIT;\n');
+          result = result.concat('\n' + str[i].trim() + '\n\nCOMMIT;\n');
           linesToCommit = nLines;
         }
         else {
-          result = result.concat('\n' + str[i]);
+          result = result.concat('\n' + str[i].trim());
           --linesToCommit;
         }
       }

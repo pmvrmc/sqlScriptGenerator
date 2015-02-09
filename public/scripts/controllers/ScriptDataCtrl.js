@@ -3,6 +3,12 @@
 sqlScriptGenerator.controller('ScriptDataCtrl', ['$scope', '$filter', function($scope, $filter) {
 
   $scope.encodings = ['UTF-8', 'WINDOWS-1252'];
+  $scope.lines = [
+    { desc: '10 linhas', value: 10 },
+    { desc: '50 linhas', value: 50 },
+    { desc: '100 linhas', value: 100 },
+    { desc: 'Só no fim', value: 0 }
+  ];
 
   //the object that will store the form data aka ng-model
   $scope.script = {};

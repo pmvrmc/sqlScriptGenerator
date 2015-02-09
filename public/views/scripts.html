@@ -28,10 +28,7 @@
 				<label>Commit a cada</label>
 			</div>
 			<div class='col-md-6'>
-				<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="10">10 linhas</label>
-				<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="50">50 linhas</label>
-				<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="100">100 linhas</label>
-				<label class="radio-inline"><input type="radio" ng-model="script.commit" ng-value="0">Só no fim</label>
+				<label class="radio-inline" ng-repeat='line in lines'><input type="radio" ng-model="script.commit" ng-value="{{line.value}}">{{line.desc}}</label>
 			</div>
 		</div>
 
