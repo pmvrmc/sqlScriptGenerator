@@ -21,14 +21,10 @@ sqlScriptGenerator.controller('ScriptDataCtrl', ['$scope', '$filter', function($
 		// check to make sure the form is completely valid
     if (isValid) {
 
-
       var blob = new Blob(["SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\",
-        $scope.script.env,
-        "\\",
-        $filter('date')($scope.script.date, 'yyyyMMdd'),
-        "\\",
-        $filter('date')($scope.script.date, 'yyyyMMdd'),
-        "_",
+        $scope.script.env + "\\",
+        $filter('date')($scope.script.date, 'yyyyMMdd') + "\\",
+        $filter('date')($scope.script.date, 'yyyyMMdd') + "_",
         $scope.script.name,
         ".log\n\nSET ECHO ON;\n\nALTER SESSION SET current_schema=",
         $scope.script.schema,
