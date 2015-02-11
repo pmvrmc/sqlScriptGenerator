@@ -3,7 +3,7 @@ SQL Script Generator
 
 featuring AngularJS!
 --------------------------
-Care only about the script itlsef!
+Care only about the script itself!
 
 Installation Procedure:
 
