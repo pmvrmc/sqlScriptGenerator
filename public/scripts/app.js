@@ -5,7 +5,7 @@ var sqlScriptGenerator = angular.module('sqlScriptGenerator', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
-    templateUrl: '../views/scripts.html',
+    templateUrl: 'views/scripts.html',
     controller: 'ScriptDataCtrl'
   });
 

@@ -21,19 +21,16 @@ sqlScriptGenerator.controller('ScriptDataCtrl', ['$scope', '$filter', function($
 		// check to make sure the form is completely valid
     if (isValid) {
 
-      var blob = new Blob(["SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\",
-        $scope.script.env + "\\",
-        $filter('date')($scope.script.date, 'yyyyMMdd') + "\\",
-        $filter('date')($scope.script.date, 'yyyyMMdd') + "_",
-        $scope.script.name,
-        ".log\n\nSET ECHO ON;\n\nALTER SESSION SET current_schema=",
-        $scope.script.schema,
-        ";\n\nALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';\n\n",
-        $filter('addCommits')($scope.script.query, $scope.script.commit),
-        "\n\nCOMMIT;\n\nSET ECHO OFF;\n\nSPOOL OFF"
+      //create and encode the script
+      var scriptQuery = "SPOOL G:\\AGOC-NP\\NP\\Operacao\\logs\\" + $scope.script.env + "\\" +
+      $filter('date')($scope.script.date, 'yyyyMMdd') + "\\" + $filter('date')($scope.script.date, 'yyyyMMdd') + "_" +
+      $scope.script.name + ".log\n\nSET ECHO ON;\n\nALTER SESSION SET current_schema=" + $scope.script.schema +
+      ";\n\nALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS';\n\n" + $filter('addCommits')($scope.script.query, $scope.script.commit) +
+      "\n\nCOMMIT;\n\nSET ECHO OFF;\n\nSPOOL OFF";
+      scriptQuery = new CustomTextEncoder($scope.script.encoding, { NONSTANDARD_allowLegacyEncoding: true }).encode(scriptQuery);
 
-      ], {type: "text/plain;charset=" + $scope.script.encoding });
-
+      //save local file
+      var blob = new Blob([scriptQuery], {type: "text/plain;charset=" + $scope.script.encoding });
       saveAs(blob, $filter('date')($scope.script.date, 'yyyyMMdd') + '_' + $scope.script.name + '.sql');
 
 		}
