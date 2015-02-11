@@ -1,3 +1,2 @@
-
-bower_components/*
-!bower_components/text-encoding/
+public/bower_components/*
+!public/bower_components/text-encoding/
