@@ -1,4 +1,2 @@
-/node_modules/*
-npm-debug.log
-/public/bower_components/*
-/scripts/*
+/bower_components
+!/bower_components/text-encoding/
