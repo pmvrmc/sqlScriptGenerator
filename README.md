@@ -1,9 +1,13 @@
-sqlScriptGenerator
+SQL Script Generator
 =======
 
-
-AngularJS + HapiJS Testing!
+featuring AngularJS!
 --------------------------
+Care only about the script itlsef!
 
+Installation Procedure:
 
-SQL Script Generator, only care about the query itself!
+1. Clone this repo
+2. Bower install
+3. Start a httpServer (eg. python -m SimpleHTTPServer 8000)
+4. Open localhost:8000/public
