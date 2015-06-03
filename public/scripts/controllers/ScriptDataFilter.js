@@ -1,61 +1,41 @@
 'use strict';
 
-sqlScriptGenerator.filter('addCommitsPreview', function(_){
+sqlScriptGenerator.filter('addCommits', function(){
 
   return function(query, nLines){
-    //eliminate empty lines
+
+    //eliminate empty lines, and trim them
     var str = query.split('\n');
-    str = _.filter(str, function(line){return line.trim().length;});
 
-    if(nLines === 0 ) return str.join('\n\t');
+    str = _.map(str, function(line){
+      return line.trim();
+    });
 
-    var result = '';
-    var linesToCommit = nLines;
+    str = _.filter(str, function(line){
+      return line.length;
+    });
 
-    for(var i = 0; i < str.length; i++){
-
-      //if last char was ';' and we have already passed nLines, COMMIT!
-      if( (str[i].indexOf(';', str[i].length - ';'.length) !== -1)
-          && (linesToCommit <= 1) ){
-        result = result.concat('\n\t' + str[i].trim() + '\n\n\tCOMMIT;\n');
-        linesToCommit = nLines;
-      }
-      else {
-        result = result.concat('\n\t' + str[i].trim());
-        --linesToCommit;
-      }
+    //if no commits, just return
+    if(nLines === 0 ){
+        return str.join('\n');
     }
-    return result;
-  }
-
-});
-
-sqlScriptGenerator.filter('addCommits', function(_){
-
-  return function(query, nLines){
-    //eliminate empty lines
-    var str = query.split('\n');
-    str = _.filter(str, function(line){return line.trim().length;});
-
-    if(nLines === 0 ) return str.join('\n');
 
     var result = '';
     var linesToCommit = nLines;
 
-    for(var i = 0; i < str.length; i++){
-
-      //if last char was ';' and we have already passed nLines, COMMIT!
-      if( (str[i].indexOf(';', str[i].length - ';'.length) !== -1)
-        && (linesToCommit <= 1) ){
-          result = result.concat('\n' + str[i].trim() + '\n\nCOMMIT;\n');
+    //for each line, see if lines until commit have already passed
+    //and if we have a line ending in ;
+    _.each(str, function(line){
+        if(linesToCommit <= 1 && line.slice(-1) === ';'){
+          result = result.concat(line + '\n\nCOMMIT;\n\n');
           linesToCommit = nLines;
         }
         else {
-          result = result.concat('\n' + str[i].trim());
+          result = result.concat(line + '\n');
           --linesToCommit;
         }
-      }
-      return result;
-    }
+    });
+    return result;
+  }
 
 });
